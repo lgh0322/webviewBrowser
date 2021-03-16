@@ -28,11 +28,13 @@ class MainActivity : AppCompatActivity() {
         web.webViewClient=object: WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 super.shouldOverrideUrlLoading(view, request)
-                return false
+                val url=request?.url.toString()
+                return !(url.startsWith("http://") || url.startsWith("https://"))
+
             }
         }
         web.webChromeClient=mWebChromeClient
-        web.loadUrl("https://www.baidu.com/")
+        web.loadUrl("https://www.google.com/")
     }
     var fullscreenContainer: FrameLayout? = null
     var customViewCallback: WebChromeClient.CustomViewCallback? = null
