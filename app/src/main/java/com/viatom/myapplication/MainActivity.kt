@@ -27,11 +27,12 @@ class MainActivity : AppCompatActivity() {
         web.settings.loadWithOverviewMode=true
         web.webViewClient=object: WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                return super.shouldOverrideUrlLoading(view, request)
+                super.shouldOverrideUrlLoading(view, request)
+                return false
             }
         }
         web.webChromeClient=mWebChromeClient
-        web.loadUrl("https://www.youtube.com")
+        web.loadUrl("https://www.baidu.com/")
     }
     var fullscreenContainer: FrameLayout? = null
     var customViewCallback: WebChromeClient.CustomViewCallback? = null
