@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.webkit.WebChromeClient
@@ -14,13 +15,14 @@ import android.webkit.WebViewClient
 import android.widget.FrameLayout
 
 class MainActivity : AppCompatActivity() {
+    lateinit var web:WebView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         window.setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                 WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED)
 
-        val web=findViewById<WebView>(R.id.aa)
+       web=findViewById<WebView>(R.id.aa)
         web.settings.setJavaScriptEnabled(true);//启用js
         web.settings.blockNetworkImage = false;//解决图片不显示
         web.settings.useWideViewPort=true
@@ -83,5 +85,12 @@ class MainActivity : AppCompatActivity() {
         customViewCallback?.onCustomViewHidden()
         customViewCallback = null
     }
+
+    override fun onBackPressed() {
+        web.goBack()
+        Log.e("littlePu", "back")
+    }
+
+
 
 }
