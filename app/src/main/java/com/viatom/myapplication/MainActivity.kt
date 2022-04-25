@@ -8,10 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.webkit.WebChromeClient
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import android.widget.FrameLayout
 
 class MainActivity : AppCompatActivity() {
@@ -27,16 +24,22 @@ class MainActivity : AppCompatActivity() {
         web.settings.blockNetworkImage = false;//解决图片不显示
         web.settings.useWideViewPort=true
         web.settings.loadWithOverviewMode=true
-        web.webViewClient=object: WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                super.shouldOverrideUrlLoading(view, request)
-                val url=request?.url.toString()
-                return !(url.startsWith("http://") || url.startsWith("https://"))
 
-            }
-        }
+        web.settings.allowFileAccess=true
+        web.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        web.getSettings().domStorageEnabled=true
+        web.settings.setAppCacheEnabled(true)
+
+//        web.webViewClient=object: WebViewClient() {
+//            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+//                super.shouldOverrideUrlLoading(view, request)
+//                val url=request?.url.toString()
+//                return !(url.startsWith("http://") || url.startsWith("https://"))
+//
+//            }
+//        }
         web.webChromeClient=mWebChromeClient
-        web.loadUrl("https://www.google.com/")
+        web.loadUrl("https://mp.weixin.qq.com/s?__biz=Mzg2MjY3MTYwOQ==&mid=2247487860&idx=1&sn=84e45e669d2ef330e48bb576c710efee&chksm=ce0516e2f9729ff48f16b296158c1f1fe34c455dbf5d716cb31717427417af2472c5e261650c#rd")
     }
     var fullscreenContainer: FrameLayout? = null
     var customViewCallback: WebChromeClient.CustomViewCallback? = null
