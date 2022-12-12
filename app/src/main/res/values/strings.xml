@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="web_guide">在WebActivity里:\n1. 覆盖onBackPressed()方法， 返回键返回网页上一层。 \n2.使用addJavascriptInterface添加javascript回调， 可以结束当前的activity \n3.webview的其他代码是进行了音频和视频播放的优化</string>
 </resources>

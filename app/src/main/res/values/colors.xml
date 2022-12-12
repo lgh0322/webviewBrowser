@@ -7,4 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhite33">#66ffffff</color>
+    <color name="colorGrayDark">#929292</color>
+    <color name="colorBlue4B">#4b97c1</color>
+    <color name="colorBlue5B">#5B9BD5</color>
+    <color name="colorOrange">#F5AF36</color>
+    <color name="colorGrayBg">#EFEFF4</color>
+
+    <color name="dialog_btn_positive_blue">#016FB5</color>
+    <color name="colorPrimary">#3DADD0</color>
+    <color name="colorPrimaryDark">#3291C3</color>
+    <drawable name="btn_focused">@color/dialog_btn_positive_blue</drawable>
+    <drawable name="btn_normal">@color/colorPrimary</drawable>
 </resources>
