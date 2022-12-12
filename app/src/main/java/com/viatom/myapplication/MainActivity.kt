@@ -1,15 +1,17 @@
 package com.viatom.myapplication
 
-import android.app.Activity
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.SyncStateContract
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.webkit.*
 import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var web:WebView
@@ -30,16 +32,24 @@ class MainActivity : AppCompatActivity() {
         web.getSettings().domStorageEnabled=true
         web.settings.setAppCacheEnabled(true)
 
-//        web.webViewClient=object: WebViewClient() {
-//            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-//                super.shouldOverrideUrlLoading(view, request)
-//                val url=request?.url.toString()
-//                return !(url.startsWith("http://") || url.startsWith("https://"))
-//
-//            }
-//        }
+        web.webViewClient=object: WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                super.shouldOverrideUrlLoading(view, request)
+                val url=request?.url.toString()
+                return !(url.startsWith("http://") || url.startsWith("https://"))
+
+            }
+        }
         web.webChromeClient=mWebChromeClient
-        web.loadUrl("https://mp.weixin.qq.com/s?__biz=Mzg2MjY3MTYwOQ==&mid=2247487860&idx=1&sn=84e45e669d2ef330e48bb576c710efee&chksm=ce0516e2f9729ff48f16b296158c1f1fe34c455dbf5d716cb31717427417af2472c5e261650c#rd")
+
+        web.addJavascriptInterface(object : Any() {
+            //定义的方法
+            @JavascriptInterface
+            fun goBack() {
+                Log.e("gaga","yes")
+            }
+        }, "Android")
+        web.loadUrl("http://193.169.0.227:8080")
     }
     var fullscreenContainer: FrameLayout? = null
     var customViewCallback: WebChromeClient.CustomViewCallback? = null
