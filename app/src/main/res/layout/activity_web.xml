@@ -6,7 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".WebActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="#00ff00"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/back"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Back"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:textColor="#ff00ff"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="WebView"
+            android:textStyle="italic"
+            android:textSize="36sp"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <WebView
+        android:layout_marginTop="50dp"
         android:id="@+id/web"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

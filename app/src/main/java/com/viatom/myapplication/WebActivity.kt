@@ -10,11 +10,16 @@ import android.view.View
 import android.view.WindowManager
 import android.webkit.*
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
 class WebActivity : AppCompatActivity() {
     lateinit var web: WebView
+    lateinit var back:TextView
+
+    val url="http://193.169.0.227:8080"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
@@ -56,7 +61,12 @@ class WebActivity : AppCompatActivity() {
                 this@WebActivity.finish()
             }
         }, "Android")
-        web.loadUrl("http://193.169.0.227:8080")
+        web.loadUrl(url)
+
+        back=findViewById(R.id.back)
+        back.setOnClickListener {
+            web.goBack()
+        }
     }
 
     var fullscreenContainer: FrameLayout? = null
